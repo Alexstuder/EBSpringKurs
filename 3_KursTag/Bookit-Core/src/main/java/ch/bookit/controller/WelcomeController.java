@@ -1,5 +1,6 @@
 package ch.bookit.controller;
 
+import ch.bookit.model.Restaurant;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,15 +22,17 @@ public class WelcomeController {
     @Value("${welcome.message}")
     private String message;
 
+    @Value("${welcome.restaurant}")
+    List<Restaurant> restaurants;
+
     private List<String> tasks = Arrays.asList("a", "b", "c", "d", "e", "f", "g");
 
     @GetMapping("/")
     public String welcome(Model model) {
-        System.out.println("Welcome");
         model.addAttribute("message", message);
         model.addAttribute("tasks", tasks);
+        System.out.println(restaurants.toString());
         System.out.println(model.toString());
-        System.out.println("Welcome2");
 
        return "welcome"; //view
         //ModelAndView modelAndView = new ModelAndView(model);
