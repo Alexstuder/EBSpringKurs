@@ -19,12 +19,12 @@ public class BookitCoreApplicationTests {
 	public void contextLoads() {
 
 		Client client = new Client("Webber","Carl","FoodStreet", "AnyTown");
-		Restaurant restaurant = new Restaurant("BestFood","All you can Eat Street" , "SchlemmerCity");
+		//Restaurant restaurant = new Restaurant("BestFood","All you can Eat Street" , "SchlemmerCity");
 
-		Reservation reservation = new Reservation(client,restaurant,4, LocalDate.of(2019,06,27), LocalTime.of(18,30,00));
+		//Reservation reservation = new Reservation(client,restaurant,4, LocalDate.of(2019,06,27), LocalTime.of(18,30,00));
 
 
-		System.out.println(reservation.toString());
+		//System.out.println(reservation.toString());
 
 	}
 
