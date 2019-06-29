@@ -5,7 +5,7 @@ import java.time.LocalTime;
 
 public class Reservation {
 
-    private Client client ;
+    private ClientDbo client ;
 
     private Restaurant restaurant ;
 
@@ -16,7 +16,7 @@ public class Reservation {
     private LocalTime time ;
 
 
-    public Reservation(Client client, Restaurant restaurant, int persons, LocalDate date, LocalTime time) {
+    public Reservation(ClientDbo client, Restaurant restaurant, int persons, LocalDate date, LocalTime time) {
         this.client = client;
         this.restaurant = restaurant;
         this.persons = persons;
@@ -24,11 +24,11 @@ public class Reservation {
         this.time = time;
     }
 
-    public Client getClient() {
+    public ClientDbo getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
+    public void setClient(ClientDbo client) {
         this.client = client;
     }
 

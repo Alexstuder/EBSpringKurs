@@ -1,7 +1,6 @@
 package ch.bookit.controller;
 
-import ch.bookit.model.Restaurant;
-import ch.bookit.model.RestaurantImpl;
+import ch.bookit.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.*;
 
 @Controller
-//@RequestMapping(path="/")
+@RequestMapping(path="/")
 public class WelcomeController {
 
     // inject via application.properties
@@ -23,20 +22,24 @@ public class WelcomeController {
     //@Value("${welcome.restaurant}")
     Restaurant restaurants = new RestaurantImpl();
 
+    private Client client = new ClientImpl();
+
     private List<String> tasks = Arrays.asList("a", "b", "c", "d", "e", "f", "g");
 
     @GetMapping("/")
-    public String welcome(Model model) {
+    public String home(Model model) {
 
         // Inits restaurants and get the List
         restaurants.getAll();
 
+        model.addAttribute("restaurants",restaurants);
+        model.addAttribute("client",client);
         model.addAttribute("message", message);
         //model.addAttribute("tasks", tasks);
         System.out.println(restaurants.toString());
         //System.out.println(model.toString());
 
-       return "welcome"; //view
+       return "home"; //view
         //ModelAndView modelAndView = new ModelAndView(model);
         //final Map<String, Object> model2 = new HashMap<>();
         //model2.put("message", message);
