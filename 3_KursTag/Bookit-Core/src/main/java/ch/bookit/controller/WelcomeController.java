@@ -4,9 +4,7 @@ import ch.bookit.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
@@ -22,7 +20,7 @@ public class WelcomeController {
     //@Value("${welcome.restaurant}")
     Restaurant restaurants = new RestaurantImpl();
 
-    private Client client = new ClientImpl();
+    private Client client ;
 
     private List<String> tasks = Arrays.asList("a", "b", "c", "d", "e", "f", "g");
 
@@ -60,9 +58,18 @@ public class WelcomeController {
     @GetMapping("/reserve")
     public String reserve(Model model) {
 
-        model.addAttribute("message", "WebSite !");
+        ClientDbo clientDbo = new ClientDbo();
+        model.addAttribute("client", clientDbo);
 
         return "reserve"; //view
+    }
+    @PostMapping("/reserve")
+    public String reserveSubmit(@ModelAttribute Model model) {
+
+
+        System.out.println(model.toString());
+
+        return "reserveConfirm"; //view
     }
 
     // /hello?name=kotlin

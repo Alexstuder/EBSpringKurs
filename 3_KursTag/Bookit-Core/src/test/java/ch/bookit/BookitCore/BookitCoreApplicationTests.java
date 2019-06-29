@@ -13,7 +13,7 @@ public class BookitCoreApplicationTests {
 	@Test
 	public void contextLoads() {
 
-		ClientDbo client = new ClientDbo("Webber","Carl","FoodStreet", "AnyTown");
+		//ClientDbo client = new ClientDbo("Webber","Carl","FoodStreet", "AnyTown");
 		//Restaurant restaurant = new Restaurant("BestFood","All you can Eat Street" , "SchlemmerCity");
 
 		//Reservation reservation = new Reservation(client,restaurant,4, LocalDate.of(2019,06,27), LocalTime.of(18,30,00));
