@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BookitCoreApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(BookitCoreApplication.class, args);
 	}
 

@@ -1,13 +1,14 @@
 package ch.bookit.model;
 
-public class RestaurantDbo {
+public class RestaurantDto {
 
     private String restaurantName ;
     private String street ;
     private String town ;
 
 
-    public RestaurantDbo(String restaurantName, String street, String town) {
+    public RestaurantDto() {}
+    public RestaurantDto(String restaurantName, String street, String town) {
         this.restaurantName = restaurantName;
         this.street = street;
         this.town = town;

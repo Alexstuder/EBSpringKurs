@@ -29,7 +29,7 @@
                 <a class="nav-link" href="reserve">Reserve a table</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Restaurants
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -41,7 +41,7 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Reservations
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -67,23 +67,33 @@
 
 <!-- Insert Tyhmleaf Code -->
 
-<main role="main" class="container">
-
+<!--<main role="main" class="container">
+-->
     <div class="starter-template">
         <h1>Reserve !</h1>
 
-        <form action="#" th:action="@{/reserve}" th:object="${client}" method="post">
-            <p>first_Name <input type="First Name" th:field="*{firstName}" /></p>
-            <p>last_Name <input type="Last Name" th:field="*{lastName}" /></p>
+
+        <form action="#" th:action="@{/reserve}" th:object="${reservationDto}" method="post">
+            <p>First Name <input type="text" th:field="*{client.firstName}" /></p>
+            <p>Last Name <input type="text" th:field="*{client.lastName}" /></p>
+            <p>Street    <input type="text" th:field="*{client.street}" /></p>
+            <p>Town      <input type="text" th:field="*{client.town}" /></p>
+
+            <select th:field="*{restaurantNameList}">
+                <option th:each="restaurantName : ${reservationDto.getRestaurantNameList()}"
+                        th:value="${restaurantName}">Wireframe</option>
+                       <!-- th:text="#{${'seedstarter.type.' + restaurantName}}">Wireframe</option-->
+            </select>
+
             <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
         </form>
     </div>
-
-    <!-- <ol>
+<!--
+    <ol>
          <li th:each="task : ${tasks}" th:text="${task}"></li>
-     </ol> -->
+     </ol>
 
-</main>
+</main> -->
 <!-- /.container -->
 
 

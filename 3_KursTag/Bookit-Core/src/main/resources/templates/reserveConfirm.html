@@ -29,7 +29,7 @@
                 <a class="nav-link" href="reserve">Reserve a table</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Restaurants
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -41,7 +41,7 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Reservations
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -67,18 +67,18 @@
 
 <!-- Insert Tyhmleaf Code -->
 
-<main role="main" class="container">
 
     <div class="starter-template">
         <h1>Reserve !</h1>
     </div>
 
     <h1>Result</h1>
-    <p th:text="'First Name: ' + ${client.firstName}" />
-    <p th:text="'Last Name: ' + ${client.firstName}" />
+
+    <p th:text="'First Name: ' + ${clientDbo.firstName}" />
+    <p th:text="'Last Name : ' + ${clientDbo.lastName}" />
+    <p th:text="'Street    : ' + ${clientDbo.street}" />
+    <p th:text="'Town      : ' + ${clientDbo.town}" />
     <a href="/reserve">Submit another reservation</a>
-</main>
-<!-- /.container -->
 
 
 

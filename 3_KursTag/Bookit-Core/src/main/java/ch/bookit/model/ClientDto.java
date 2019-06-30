@@ -1,6 +1,6 @@
 package ch.bookit.model;
 
-public class ClientDbo {
+public class ClientDto {
 
 
     private String firstName ;
@@ -9,14 +9,14 @@ public class ClientDbo {
     private String town ;
 
 
-    public ClientDbo() {
+ /*   public ClientDto() {
 
         // Get a fresh initialized empty Client
         this.firstName = "";
         this.lastName = "";
         this.street = "";
         this.town = "";
-    }
+    }*/
 
     public String getFirstName() {
         return firstName;
@@ -52,7 +52,7 @@ public class ClientDbo {
 
     @Override
     public String toString() {
-        return "ClientDbo{" +
+        return "ClientDto{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", street='" + street + '\'' +

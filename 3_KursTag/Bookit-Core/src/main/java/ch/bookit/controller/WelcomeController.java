@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.*;
 
 @Controller
-@RequestMapping(path="/")
+//@RequestMapping(path="/")
 public class WelcomeController {
 
     // inject via application.properties
@@ -18,9 +18,10 @@ public class WelcomeController {
     private String message;
 
     //@Value("${welcome.restaurant}")
-    Restaurant restaurants = new RestaurantImpl();
+    RestaurantListImpl restaurantList = new RestaurantListImpl();
 
-    private Client client ;
+    ReservationDto reservation ;
+
 
     private List<String> tasks = Arrays.asList("a", "b", "c", "d", "e", "f", "g");
 
@@ -28,13 +29,12 @@ public class WelcomeController {
     public String home(Model model) {
 
         // Inits restaurants and get the List
-        restaurants.getAll();
+        restaurantList.readRestaurantList();
 
-        model.addAttribute("restaurants",restaurants);
-        model.addAttribute("client",client);
-        model.addAttribute("message", message);
+
+        //model.addAttribute("message", message);
         //model.addAttribute("tasks", tasks);
-        System.out.println(restaurants.toString());
+        //System.out.println(restaurantList.toString());
         //System.out.println(model.toString());
 
        return "home"; //view
@@ -58,19 +58,33 @@ public class WelcomeController {
     @GetMapping("/reserve")
     public String reserve(Model model) {
 
-        ClientDbo clientDbo = new ClientDbo();
-        model.addAttribute("client", clientDbo);
+        // Inits restaurants and get the List
+        restaurantList.readRestaurantList();
+
+
+        ReservationDto reservationDto = new ReservationDto();
+        reservationDto.setClient(new ClientDto());
+        reservationDto.setRestaurantNameList(restaurantList.getRestaurantNames());
+        reservationDto.setValueRestaurant(0);
+
+        model.addAttribute("reservationDto", reservationDto );
 
         return "reserve"; //view
     }
     @PostMapping("/reserve")
-    public String reserveSubmit(@ModelAttribute Model model) {
+    public ModelAndView reserveSubmit(@ModelAttribute ClientDto clientDbo, @ModelAttribute Integer value) {
 
 
-        System.out.println(model.toString());
 
-        return "reserveConfirm"; //view
+        final Map<String,Object> model =
+                new HashMap<>();
+        model.put("clientDbo",clientDbo);
+        model.put("restaurantList", restaurantList.getRestaurant(value));
+
+        System.out.println(clientDbo.toString());
+
+
+        return new ModelAndView("reserveConfirm",model); //view
     }
 
-    // /hello?name=kotlin
 }
